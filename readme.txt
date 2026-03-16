@@ -1,0 +1,13 @@
+1. disaster_look_all_pic.py: Tests the performance of 9 vision-language large models (i.e., albef_feature_extractor_base, albef_vqa_vqav2, clip_ViT_B_16, clip_ViT_B_32, clip_ViT_L_14, blip_vqa_aokvqa, blip_vqa_okvqa, blip_vqa_vqav2, and vilt_b32_finetuned_vqa) on weather disaster recognition tasks using basic prompts. Results are stored in the result folder in the same directory as the program.
+
+2. disaster_look_all_pic_deepseek.py: Tests the performance of the deepseek-vl-7b-chat large model on weather disaster recognition tasks using basic prompts. Results are stored in the result folder in the same directory, with the model output file named deepseek_vl.txt. Since the output file contains a small amount of analytical content, manual correction is performed via keyword extraction, and the corrected result is saved as deepseek_vl_change.txt in the result folder.
+
+3. Sensitivity test/sentence structure/disaster_look_all_pic.py and Sensitivity test/sentence structure/disaster_look_all_pic_deepseek.py: Used to test the performance of 10 vision-language large models on weather disaster recognition tasks after modifying the structure of basic prompts. Results are stored in the result folder in the same directory as the program, and the corrected result of deepseek_vl.txt is renamed deepseek_vl_change.txt.
+
+4. Sensitivity test/synonym/disaster_look_all_pic.py and Sensitivity test/synonym/disaster_look_all_pic_deepseek.py: Used to test the performance of 10 vision-language large models on weather disaster recognition tasks after replacing basic prompts with synonyms. Results are stored in the result folder in the same directory as the program, and the corrected result of deepseek_vl.txt is renamed deepseek_vl_change.txt.
+
+5. ensemble learning/model_ten_to_one.py: Classifies the prediction results and merges the one-hot encodings of the best-performing outputs from the 10 models across three prompt types (basic, synonym, and structure-modified). The best results for each model are stored in ensemble learning/model_result, and the generated one-hot encoding results are stored in ensemble learning/model_data/model10_v2.0_encoding.csv.
+
+6. ensemble learning/cut_data.py: Splits model10_v2.0_encoding.csv in ensemble learning/model_data into test_set_v4.0.csv and train_set_v4.0.csv, and saves them in the same directory.
+
+7. ensemble learning/onehotEncoding_blending_prompt.py: Trains on train_set_v4.0.csv and tests on test_set_v4.0.csv using the blending ensemble learning method. The weight model and result files are stored in the ensemble learning/best_blending folder.
